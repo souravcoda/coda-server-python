@@ -22,16 +22,17 @@ application_logger = logger_settings.application_logger
 confluent_producer = Producer(settings.KAFKA_PRODUCER_SETTINGS)
 
 
-
-
-@app.route('coda/v0.0/ping/'.format(settings.API_VERSION), methods=['GET'])
+@app.route('/coda/v0.01/helloWorld', methods=['GET'])
 async def ping(request):
     """
     API to check web service status.
     :param request:
     :return: return static message
     """
-    result = {'message': 'pong'}
+    result = {
+            "message": "Hello World, This is Python!!",
+    		"code": 200
+            }
     return response.json(result)
 
 #@app.route('coda/{}/stream-data/'.format(settings.API_VERSION),methods=['POST'])
